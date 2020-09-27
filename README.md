@@ -4,7 +4,6 @@
 YOLOv4, YOLOv4-tiny Implemented in Tensorflow 2.3. 
 Convert YOLO v4, YOLOv3, YOLO tiny .weights to .pb, .tflite and trt format for tensorflow, tensorflow lite, tensorRT.
 
-Link to yolov4.weights file: https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT
 
 
 # Setting Up Environment
@@ -43,10 +42,13 @@ pip install -r requirements-gpu.txt
 
 ```
 
-### Performance
+# Performance
 <p align="center"><img src="data/performance.png" width="640"\></p>
 
-### Convert YOLOv4 to TensorFlow
+# Download Weights File
+Download `yolov4.weights` file 245 MB: [yolov4.weights](https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights) (Google-drive mirror [yolov4.weights](https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT) )
+
+# Convert YOLOv4 to TensorFlow
 
 ```bash
 # Convert darknet weights to tensorflow
@@ -83,7 +85,7 @@ python detect_video.py --weights ./checkpoints/yolov4-416 --size 416 --model yol
 ##### Yolov4 original weight
 <p align="center"><img src="result.png" width="640"\></p>
 
-### Convert to tflite
+# Convert to tflite
 
 ```bash
 # Save tf model for tflite converting
@@ -113,7 +115,7 @@ python detect_video.py --weights ./checkpoints/yolov4-416.tflite --size 416 --mo
 <p align="center"><img src="result-int8.png" width="640"\></p>
 
 Yolov4 and Yolov4-tiny int8 quantization have some issues. I will try to fix that. You can try Yolov3 and Yolov3-tiny int8 quantization 
-### Convert to TensorRT
+# Convert to TensorRT
 ```bash# yolov3
 python save_model.py --weights ./data/yolov3.weights --output ./checkpoints/yolov3.tf --input_size 416 --model yolov3
 python convert_trt.py --weights ./checkpoints/yolov3.tf --quantize_mode float16 --output ./checkpoints/yolov3-trt-fp16-416
@@ -127,7 +129,7 @@ python save_model.py --weights ./data/yolov4.weights --output ./checkpoints/yolo
 python convert_trt.py --weights ./checkpoints/yolov4.tf --quantize_mode float16 --output ./checkpoints/yolov4-trt-fp16-416
 ```
 
-### Evaluate on COCO 2017 Dataset
+# Evaluate on COCO 2017 Dataset
 ```bash
 # run script in /script/get_coco_dataset_2017.sh to download COCO 2017 Dataset
 # preprocess coco dataset
@@ -154,7 +156,7 @@ python main.py --output results_yolov4_tf
 | YoloV4      | 61.96   | 57.33   |         |
 
 
-### Traning your own model
+# Traning your own model
 ```bash
 # Prepare your dataset
 # If you want to train from scratch:
@@ -169,7 +171,7 @@ The training performance is not fully reproduced yet, so I recommended to use Al
 
 
 
-### TODO
+# TODO
 * [x] Convert YOLOv4 to TensorRT
 * [x] YOLOv4 tflite on android
 * [ ] YOLOv4 tflite on ios
@@ -181,7 +183,7 @@ The training performance is not fully reproduced yet, so I recommended to use Al
 * [x] yolov4 tflite version
 * [x] yolov4 in8 tflite version for mobile
 
-### References
+# References
 
   * YOLOv4: Optimal Speed and Accuracy of Object Detection [YOLOv4](https://arxiv.org/abs/2004.10934).
   * [darknet](https://github.com/AlexeyAB/darknet)
