@@ -7,8 +7,41 @@ Convert YOLO v4, YOLOv3, YOLO tiny .weights to .pb, .tflite and trt format for t
 Link to yolov4.weights file: https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT
 
 
-### Prerequisites
-* Tensorflow 2.3.0
+# Setting Up Environment
+### Using Conda
+#### CPU
+```bash
+# CPU
+conda env create -f conda-cpu.yml
+
+
+# activate environment on Windows or Linux
+conda activate tf-cpu
+
+# activate environment on Mac
+source activate tf-cpu
+```
+#### GPU
+```bash
+# GPU
+conda env create -f conda-gpu.yml
+
+# activate environment on Windows or Linux
+conda activate tf-gpu
+
+# activate environment on Mac
+source activate tf-gpu
+```
+
+### Using Pip
+```bash
+# CPU
+pip install -r requirements.txt
+
+# GPU
+pip install -r requirements-gpu.txt
+
+```
 
 ### Performance
 <p align="center"><img src="data/performance.png" width="640"\></p>
