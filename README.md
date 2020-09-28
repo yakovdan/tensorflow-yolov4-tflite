@@ -11,8 +11,11 @@ This repository shows how to convert YOLO v4, YOLOv3, YOLO tiny .weights to .pb,
 1. [Setting Up Environment](#setting-up-environment)
    * [Using Conda](#using-conda)
    * [Using Pip](#using-pip)
-3. [Convert YOLOv4 to TensorFlow](#convert-yolov4-to-tensorflow)
-4. [Run Object Detection](#run-object-detection)
+2. [Convert YOLOv4 to TensorFlow](#convert-yolov4-to-tensorflow)
+   * [Run Object Detection](#run-object-detection)
+3. [Convert YOLOv4 to tflite](#convert-to-tflite)
+   * [Run Objection Detection using TFLite Model](#run-object_detection-using-tflite-model)
+
 
 
 # Setting Up Environment
