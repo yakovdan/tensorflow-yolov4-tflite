@@ -143,6 +143,8 @@ python convert_trt.py --weights ./checkpoints/yolov4.tf --quantize_mode float16 
 ```
 # FPS Comparison
 
+We use ``japan.mp4`` for all the experiments and report following results.
+
 **OpenCV GPU:** 9.96 FPS
 
 **Darknet GPU:** 13.5 FPS
