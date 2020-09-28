@@ -15,6 +15,7 @@ This repository shows how to convert YOLO v4, YOLOv3, YOLO tiny .weights to .pb,
    * [Run Object Detection](#run-object-detection)
 3. [Convert YOLOv4 to tflite](#convert-to-tflite)
    * [Run Objection Detection using TFLite Model](#run-object_detection-using-tflite-model)
+4. [FPS Comparison](#fps-comparison)
 
 
 
@@ -143,8 +144,11 @@ python convert_trt.py --weights ./checkpoints/yolov4.tf --quantize_mode float16 
 # FPS Comparison
 
 **OpenCV GPU:** 9.96 FPS
-**Darknet GPU:* 13.5 FPS
+
+**Darknet GPU:** 13.5 FPS
+
 **TensorFlow GPU:**
+
 **TFLite GPU:**
 
 # Evaluate on COCO 2017 Dataset
