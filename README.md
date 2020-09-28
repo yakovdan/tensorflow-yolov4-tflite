@@ -86,7 +86,7 @@ python detect.py --weights ./checkpoints/yolov4-tiny-416 --size 416 --model yolo
 python detect.py --weights ./checkpoints/yolov4-tiny-416 --size 416 --model yolov4 --images "./data/images/kite.jpg, ./data/images/girl.jpg"
 
 # Run yolov4 on video
-python detect_video.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --video ./data/video/video.mp4 --output ./detections/video_output.avi
+python detect_video.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --video ./data/video/japan.mp4 --output ./detections/video_output.avi
 
 # Run yolov4 on webcam
 python detect_video.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --video 0 --output ./detections/webcam_output.avi
@@ -121,7 +121,7 @@ python convert_tflite.py --weights ./checkpoints/yolov4-416 --output ./checkpoin
 python detect.py --weights ./checkpoints/yolov4-416.tflite --size 416 --model yolov4 --image ./data/kite.jpg --framework tflite
 
 # Run demo tflite on videos
-python detect_video.py --weights ./checkpoints/yolov4-416.tflite --size 416 --model yolov4 --video ./data/video/video.mp4 --output ./detections/video_output.avi --framework tflite
+python detect_video.py --weights ./checkpoints/yolov4-416.tflite --size 416 --model yolov4 --video ./data/video/japan.mp4 --output ./detections/video_output.avi --framework tflite
 
 ```
 ##### Yolov4 tflite int8 weight
