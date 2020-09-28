@@ -73,7 +73,7 @@ python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --
 python detect.py --weights ./checkpoints/yolov4-tiny-416 --size 416 --model yolov4 --image ./data/kite.jpg --tiny
 
 # Run on multiple images
-python detect.py --weights ./checkpoints/yolov4-tiny-416 --size 416 --model yolov4 --images "./data/images/kite.jpg, ./data/images/dog.jpg"
+python detect.py --weights ./checkpoints/yolov4-tiny-416 --size 416 --model yolov4 --images "./data/images/kite.jpg, ./data/images/girl.jpg"
 
 # Run yolov4 on video
 python detect_video.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --video ./data/video/video.mp4 --output ./detections/video_output.avi
