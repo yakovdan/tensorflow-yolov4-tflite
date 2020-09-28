@@ -140,6 +140,12 @@ python convert_trt.py --weights ./checkpoints/yolov3-tiny.tf --quantize_mode flo
 python save_model.py --weights ./data/yolov4.weights --output ./checkpoints/yolov4.tf --input_size 416 --model yolov4
 python convert_trt.py --weights ./checkpoints/yolov4.tf --quantize_mode float16 --output ./checkpoints/yolov4-trt-fp16-416
 ```
+# FPS Comparison
+
+**OpenCV GPU:** 9.96 FPS
+**Darknet GPU:* 13.5 FPS
+**TensorFlow GPU:**
+**TFLite GPU:**
 
 # Evaluate on COCO 2017 Dataset
 ```bash
