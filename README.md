@@ -8,6 +8,12 @@ This repository is created for the channel [TheCodingBug](https://www.youtube.co
 This repository shows how to convert YOLO v4, YOLOv3, YOLO tiny .weights to .pb, .tflite and trt format for tensorflow, tensorflow lite, tensorRT.
 
 
+1. [Setting Up Environment](#setting-up-environment)
+   * [Using Conda](#using-conda)
+   * [Using Pip](#using-pip)
+3. [Convert YOLOv4 to TensorFlow](#convert-yolov4-to-tensorflow)
+4. [Run Object Detection](#run-object-detection)
+
 
 # Setting Up Environment
 ### Using Conda
