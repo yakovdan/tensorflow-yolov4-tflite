@@ -154,9 +154,11 @@ We use ``japan.mp4`` for all the experiments and report following results.
 
 **Darknet GPU:** 13.5 FPS
 
-**TensorFlow GPU:**
+**TensorFlow GPU:** 11.5 FPS
 
-**TFLite GPU:**
+**TFLite CPU:** 2 FPS
+
+**TFLite GPU (On Android):** To be tested
 
 # Evaluate on COCO 2017 Dataset
 ```bash
