@@ -61,6 +61,8 @@ pip install -r requirements-gpu.txt
 # Download Weights File
 Download `yolov4.weights` file 245 MB: [yolov4.weights](https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights) (Google-drive mirror [yolov4.weights](https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT) )
 
+If using ``tiny`` version, download [yolov4-tiny.weights](https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights) file instead. I am using original ``yolov4`` because its more accurate (although slower).
+
 # Convert YOLOv4 to TensorFlow
 
 ```bash
