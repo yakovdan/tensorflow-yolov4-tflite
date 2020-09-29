@@ -131,7 +131,10 @@ python detect_video.py --weights ./checkpoints/yolov4-416.tflite --size 416 --mo
 
 Yolov4 and Yolov4-tiny int8 quantization have some issues. I will try to fix that. You can try Yolov3 and Yolov3-tiny int8 quantization 
 # Convert to TensorRT
-```bash# yolov3
+Similar to above method, you can convert darknet ``yolov3`` or ``yolov4`` models to ``tensorflow`` and then to ``TensorRT``.
+
+```bash
+# yolov3
 python save_model.py --weights ./data/yolov3.weights --output ./checkpoints/yolov3.tf --input_size 416 --model yolov3
 python convert_trt.py --weights ./checkpoints/yolov3.tf --quantize_mode float16 --output ./checkpoints/yolov3-trt-fp16-416
 
