@@ -35,7 +35,8 @@ def convolutional(input_layer, filters_shape, downsample=False, activate=True, b
         if activate_type == "leaky":
             conv = tf.nn.leaky_relu(conv, alpha=0.1)
         elif activate_type == "mish":
-            conv = mish(conv)
+            #conv = mish(conv)
+            conv = tf.nn.relu6(conv+3.0) * 0.1666666666666 * conv
     return conv
 
 def mish(x):

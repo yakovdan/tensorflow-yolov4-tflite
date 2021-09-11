@@ -1,4 +1,4 @@
-name: tf-cpu
+name: tf-cpu1
 
 dependencies:
   - python==3.8

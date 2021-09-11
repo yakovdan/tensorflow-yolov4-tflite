@@ -1,4 +1,5 @@
 import tensorflow as tf
+print(tf.__version__)
 from absl import app, flags, logging
 from absl.flags import FLAGS
 import numpy as np
@@ -12,7 +13,7 @@ flags.DEFINE_string('weights', './checkpoints/yolov4-416', 'path to weights file
 flags.DEFINE_string('output', './checkpoints/yolov4-416-fp32.tflite', 'path to output')
 flags.DEFINE_integer('input_size', 416, 'path to output')
 flags.DEFINE_string('quantize_mode', 'float32', 'quantize mode (int8, float16, float32)')
-flags.DEFINE_string('dataset', "/Volumes/Elements/data/coco_dataset/coco/5k.txt", 'path to dataset')
+flags.DEFINE_string('dataset', "D:/Projects/tensorflow-yolov4-tflite/imagelist.txt", 'path to dataset')
 
 def representative_data_gen():
   fimage = open(FLAGS.dataset).read().split()
@@ -29,18 +30,21 @@ def representative_data_gen():
 
 def save_tflite():
   converter = tf.lite.TFLiteConverter.from_saved_model(FLAGS.weights)
-
+  converter.experimental_enable_resource_variables = True
+  converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS, tf.lite.OpsSet.SELECT_TF_OPS]
   if FLAGS.quantize_mode == 'float16':
     converter.optimizations = [tf.lite.Optimize.DEFAULT]
     converter.target_spec.supported_types = [tf.compat.v1.lite.constants.FLOAT16]
     converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS, tf.lite.OpsSet.SELECT_TF_OPS]
     converter.allow_custom_ops = True
   elif FLAGS.quantize_mode == 'int8':
-    converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
+    #converter.inference_input_type = tf.int8
+    #converter.inference_output_type = tf.int8
     converter.optimizations = [tf.lite.Optimize.DEFAULT]
-    converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS, tf.lite.OpsSet.SELECT_TF_OPS]
-    converter.allow_custom_ops = True
-    # converter.representative_dataset = representative_data_gen
+    converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
+    #converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS]#, tf.lite.OpsSet.SELECT_TF_OPS]
+    converter.allow_custom_ops = False
+    converter.representative_dataset = representative_data_gen
 
   tflite_model = converter.convert()
   open(FLAGS.output, 'wb').write(tflite_model)
@@ -48,7 +52,7 @@ def save_tflite():
   logging.info("model saved to: {}".format(FLAGS.output))
 
 def demo():
-  interpreter = tf.lite.Interpreter(model_path=FLAGS.output)
+  interpreter = tf.lite.Interpreter(model_path="./checkpoints/yolov4-416-int8-test.tflite")
   interpreter.allocate_tensors()
   logging.info('tflite model loaded')
 
