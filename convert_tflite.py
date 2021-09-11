@@ -13,7 +13,7 @@ flags.DEFINE_string('weights', './checkpoints/yolov4-416', 'path to weights file
 flags.DEFINE_string('output', './checkpoints/yolov4-416-fp32.tflite', 'path to output')
 flags.DEFINE_integer('input_size', 416, 'path to output')
 flags.DEFINE_string('quantize_mode', 'float32', 'quantize mode (int8, float16, float32)')
-flags.DEFINE_string('dataset', "D:/Projects/tensorflow-yolov4-tflite/imagelist.txt", 'path to dataset')
+flags.DEFINE_string('dataset', "./data/dataset/val2017.txt", 'path to dataset')
 
 def representative_data_gen():
   fimage = open(FLAGS.dataset).read().split()
@@ -38,10 +38,11 @@ def save_tflite():
     converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS, tf.lite.OpsSet.SELECT_TF_OPS]
     converter.allow_custom_ops = True
   elif FLAGS.quantize_mode == 'int8':
-    #converter.inference_input_type = tf.int8
-    #converter.inference_output_type = tf.int8
     converter.optimizations = [tf.lite.Optimize.DEFAULT]
     converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
+    
+    
+    converter.representative_dataset = representative_data_gen
     #converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS]#, tf.lite.OpsSet.SELECT_TF_OPS]
     converter.allow_custom_ops = False
     converter.representative_dataset = representative_data_gen
@@ -67,7 +68,8 @@ def demo():
 
   interpreter.set_tensor(input_details[0]['index'], input_data)
   interpreter.invoke()
-  output_data = [interpreter.get_tensor(output_details[i]['index']) for i in range(len(output_details))]
+  output_tensor_index = output_details[0]['index']
+  output_data = interpreter.get_tensor(output_tensor_index)
 
   print(output_data)
 
